@@ -2,36 +2,36 @@
 
 using namespace std;
 
+// prefunciones o prototipo de funciones
 void imprimirLetra( char , int );
 void cantidadLetra( char , int );
 
 int main()
 {
-    // documentacion osbre el codigo ASCII: https://elcodigoascii.com.ar/
+    // documentacion sobre el codigo ASCII: https://elcodigoascii.com.ar/
     char letra = 97 ; // 97 hasta 122, el abecedario
-    int limite = 0 ;
+    unsigned int limite = 0 ;
 
     while( true )
-    {
-        try
-        {
-            cout << "Ingrese un numero(27 como valor maximo): " ; cin >> limite ;
-            
-            if( cin.fail() ) throw "Valor ingresado incorrecto." ;
+    {       
+        cin.clear();  
+        cout << "0 para salir\nIngrese un numero(27 como valor maximo): " ; cin >> limite ;
 
-            if( limite == -1 ) break;
-            else if( limite > 0 && limite <= 27 ) imprimirLetra( letra , limite ) ;  
-            else cout << "Valor fuera de rango." << endl ;
-        }
-        catch( const char* e )
-        {
-            cerr << e << endl;
-        }
+        if( limite == 0 ) break;   // condicion para salir del loop
+        else if( limite > 0 && limite <= 27 ) imprimirLetra( letra , limite ) ;  // rango aceptable
+        else cout << "Valor fuera de rango." << endl ;
     } // fin while
     
     return 0 ;
 } // fin main
 
+/**
+ * @brief  imprime las letras y la cantidad de estas
+ * @note   
+ * @param  letra: 
+ * @param  limite: 
+ * @retval None
+ */
 void imprimirLetra( char letra , int limite )
 {
     for( int i = 1 ; i <= limite ; i++ )
@@ -45,9 +45,16 @@ void imprimirLetra( char letra , int limite )
         }
 
         letra++ ;
-    }
+    } cout<<endl;
 } // fin imprimirLetra
 
+/**
+ * @brief  imprime la letra designada, la cantidad de veces que corresponda.
+ * @note   
+ * @param  letra: 
+ * @param  cantidad: 
+ * @retval None
+ */
 void cantidadLetra( char letra , int cantidad )
 {
     for( int i = 0 ; i < cantidad ; i++ )
