@@ -11,18 +11,23 @@ int main()
     char letra = 97 ; // 97 hasta 122, el abecedario
     int limite = 0 ;
 
-    try
+    while( true )
     {
-        cout << "Ingrese un numero(27 como valor maximo): " ; cin >> limite ;
-        
-        if( cin.fail() ) throw "Valor ingresado incorrecto." ;
+        try
+        {
+            cout << "Ingrese un numero(27 como valor maximo): " ; cin >> limite ;
+            
+            if( cin.fail() ) throw "Valor ingresado incorrecto." ;
 
-        imprimirLetra( letra , limite ) ;  
-    }
-    catch( const char* e )
-    {
-        cerr << e << endl;
-    }
+            if( limite == -1 ) break;
+            else if( limite > 0 && limite <= 27 ) imprimirLetra( letra , limite ) ;  
+            else cout << "Valor fuera de rango." << endl ;
+        }
+        catch( const char* e )
+        {
+            cerr << e << endl;
+        }
+    } // fin while
     
     return 0 ;
 } // fin main
@@ -31,14 +36,12 @@ void imprimirLetra( char letra , int limite )
 {
     for( int i = 1 ; i <= limite ; i++ )
     {
-        cantidadLetra( letra , i ) ;        
-        cout<<endl;        
+        cantidadLetra( letra , i ) ;      
 
         if( letra == 110 ) // si letra es n
         {
             i++ ;
             cantidadLetra( 164 , i ) ; // letra ñ
-            cout<<endl;
         }
 
         letra++ ;
