@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>       // documentacion: http://www.cplusplus.com/reference/vector/vector/
-#include <algorithm>    // documentacion: 
+#include <algorithm>    // documentacion: http://www.cplusplus.com/reference/algorithm/?kw=algorithm
 
 using namespace std ;
 
