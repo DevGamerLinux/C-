@@ -15,7 +15,7 @@ int main()
 
     lista = llenarVector( lista ) ;   
     mostrarVector( lista ) ; 
-    lista = ordenarMenorManyor( lista) ;
+    lista = ordenarMenorManyor( lista ) ;
     mostrarVector( lista ) ;
     lista = ordenarManyorMenor( lista ) ;
     mostrarVector( lista ) ;
