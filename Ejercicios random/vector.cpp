@@ -50,22 +50,7 @@ void mostrarVector( vector<int> lista )
 
 vector<int> ordenarMenorManyor( vector<int> lista )
 {
-    bool bandera = true ;
-    while( bandera )
-    {
-        bandera = false ;
-        for( int i = 0; i < lista.size()-1; i++) 
-        {
-            if( lista[i] > lista[i+1] )
-            {
-                lista[i] += lista[i+1] ;
-                lista[i+1] = lista[i] - lista[i+1] ;
-                lista[i] -= lista[i+1] ;
-                bandera = true ;
-            }
-        }
-    }
-    
+    sort( lista.begin() , lista.end() ) ;
     return lista ;
 } // fin ordenarMenorManyor
 
