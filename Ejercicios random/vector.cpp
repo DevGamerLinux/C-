@@ -11,9 +11,9 @@ vector<int> ordenarManyorMenor( vector<int> );
 
 int main()
 {
-    vector<int> lista;
+    vector<int> lista = { 1 , 2 , 3 , 4 , 5 , 8 , 9 , 10 , 6 , 7 } ;
 
-    lista = llenarVector( lista ) ;   
+    //lista = llenarVector( lista ) ;   
     mostrarVector( lista ) ; 
     lista = ordenarMenorManyor( lista ) ;
     mostrarVector( lista ) ;
