@@ -1,8 +1,7 @@
 Compilar.
-
-1. g++ -c datosUsuario.cpp
-2. g++ -c lectura.cpp
-3. g++ -c fortuna.cpp
+* g++ -c datosUsuario.cpp
+* g++ -c lectura.cpp
+* g++ -c fortuna.cpp
 
 g++ -o fortuna lectura.o datosUsuario.o fortuna.o
 
