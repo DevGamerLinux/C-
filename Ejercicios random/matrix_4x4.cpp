@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <ios> 
+#include <iomanip> 
 
 using namespace std;
 
@@ -11,11 +13,17 @@ int valMaxMatriz( vector< vector<int> > ) ;
 int valMaxVector( vector<int> ) ;
 map< int , int > duplicados( int , vector< vector<int> > ) ;
 void mostrarDuplicados( map< int , int > ) ;
+int sumaDiagonalPrincipal( vector< vector<int> > ) ;
+int promedioMatriz( vector< vector<int> > ) ;
+int mayorPromedio( int , vector< vector<int> > ) ;
 
 int main()
 {
     vector< vector<int> > matriz( 4 , vector<int>(4) ) ;
-    int valMax = 0 ;
+    int valMax = 0 ,        // valor maximo de la matriz
+        sumaDiagonal = 0 ,  // suma de la diagonal principal
+        promedio = 0 ,      // promedio de la matriz
+        cantidad = 0 ;      // cantidad de numeros mayores al promedio
     map< int , int > posiciones ;   // posiciones de los duplicados
 
     cout << "Llenar matriz" << endl ;  
@@ -23,16 +31,26 @@ int main()
 
     cout << "Mostrar contenido de la matriz" << endl ;
     mostrarMatriz( matriz ) ;
+    cout << endl ;
 
-    cout << "Buscando el valor maximo de la matriz" << endl << endl ;
     valMax = valMaxMatriz( matriz ) ;
     cout << "El valor maximo de la matriz es: " << valMax << endl << endl ;
 
-    cout << "Buscar la cantidad de duplicados y sus posiciones" << endl << endl ;
+    cout << "Buscar la cantidad de duplicados y sus posiciones" << endl ;
     posiciones = duplicados( valMax , matriz ) ;
-    cout << "Cantidad de duplicados: " << posiciones.size() << endl << endl ;
+    cout << "Cantidad de duplicados: " << posiciones.size() << endl ;
     cout << "Mostrar las posiciones del los duplicados" << endl ;
     mostrarDuplicados( posiciones ) ;
+    cout << endl ;
+
+    sumaDiagonal = sumaDiagonalPrincipal( matriz ) ;
+    cout << "La suma de la diagonal principal es: " << sumaDiagonal << endl ;
+
+    promedio = promedioMatriz( matriz ) ;
+    cout << "El promedio de la matriz es: " << promedio << endl ;
+
+    cantidad = mayorPromedio( promedio , matriz ) ;
+    cout << "Valores mayores al promedio es: " << cantidad << endl ;
 
     return 0 ;
 } // fin main
@@ -72,7 +90,8 @@ void mostrarMatriz( vector< vector<int> > matriz )
     {
         for( int j = 0 ; j < matriz.at(0).size() ; j++ )
         {
-            j == matriz.at(0).size() - 1 ?  cout << matriz[i][j] << endl : cout << matriz[i][j] << " " ;
+            cout << setw( 5 ) ;
+            j == matriz.at(0).size() - 1 ?  cout << matriz[i][j] << endl : cout << matriz[i][j] ;
         }
     }
 } // mostrarMatriz
@@ -125,3 +144,45 @@ void mostrarDuplicados( map< int , int > posiciones )
         cout << "(" << it->first << "," << it->second << ")" << endl ;
     }
 } // fin mostrarDuplicados
+
+int sumaDiagonalPrincipal( vector< vector<int> > matriz ) 
+{
+    int suma = 0 ;
+
+    for( int i = 0 ; i < matriz.size() ; i++ )
+    {
+        suma += matriz[i][i] ;
+    }
+
+    return suma ;
+} // fin sumaDiagonalPrincipal
+
+int promedioMatriz( vector< vector<int> > matriz )
+{
+    int promedio = 0 ;
+
+    for( int i = 0 ; i < matriz.size() ; i++ )
+    {
+        for( int j = 0 ; j < matriz.at(0).size() ; j++ )
+        {
+            promedio += matriz[i][j] ;
+        }
+    }
+
+    return promedio / ( matriz.size() * matriz.at(0).size() ) ;
+} // fin promedioMatriz
+
+int mayorPromedio( int promedio , vector< vector<int> > matriz )
+{
+    int cantidad = 0 ;
+
+    for( int i = 0 ; i < matriz.size() ; i++ )
+    {
+        for( int j = 0 ; j < matriz.at(0).size() ; j++ )
+        {
+            if( matriz[i][j] > promedio ) cantidad++ ;
+        }
+    }
+
+    return cantidad ;
+} // fin mayorPromedio
