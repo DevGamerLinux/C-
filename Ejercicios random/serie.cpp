@@ -62,7 +62,7 @@ float sumatoria( int limite )
 
 void calcularSerie()
 {
-    const float numero = 4 ;
+    const float numero = 4.0f ;
     int limite = 0 ;
     float resultado = 0.0f ;
 
